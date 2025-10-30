@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wextra -Werror -Wall
+CFLAGS = -Wall -Wextra -Werror
 
 NAME = so_long
 BONUS_NAME = so_long_bonus
@@ -13,6 +13,7 @@ GNL_DIR = ./libft/gnl
 LIBFT_LIB = $(LIBFT_DIR)/libft.a
 GNL_LIB = $(GNL_DIR)/libftgnl.a
 FT_PRINTF_LIB = $(FTPRINTF_DIR)/libftprintf.a
+MLX_LIB = $(MLX_DIR)/libmlx.a
 
 MINILIBX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lz
 LIBFT_FLAGS = -L$(LIBFT_DIR) -lft
@@ -21,8 +22,6 @@ GNL_FLAGS = -L$(GNL_DIR) -lftgnl
 
 INCLUDES = -I$(MLX_DIR) -I$(LIBFT_DIR) -I$(FTPRINTF_DIR) -I$(GNL_DIR)
 BONUS_INCLUDES = -I$(MLX_DIR) -I$(BONUS) -I$(LIBFT_DIR) -I$(FTPRINTF_DIR) -I$(GNL_DIR)
-
-all: $(LIBFT_LIB) $(GNL_LIB) $(FT_PRINTF_LIB) $(NAME)
 
 SRC_DIR = ./src/
 SRC = img_loading.c img_utils.c keypress_eventhandle.c main.c \
@@ -41,6 +40,13 @@ OBJ := $(SRC:.c=.o)
 BONUS_SRC := $(addprefix $(BONUS_SRC_DIR), $(BONUS_SRC))
 BONUS_OBJ := $(BONUS_SRC:.c=.o)
 
+all: $(MLX_LIB) $(LIBFT_LIB) $(GNL_LIB) $(FT_PRINTF_LIB) $(NAME)
+
+# Build MiniLibX
+$(MLX_LIB):
+	make -C $(MLX_DIR)
+
+# Build Libft, GNL, FT_PRINTF
 $(LIBFT_LIB):
 	make -C $(LIBFT_DIR)
 
@@ -50,30 +56,34 @@ $(GNL_LIB):
 $(FT_PRINTF_LIB):
 	make -C $(FTPRINTF_DIR)
 
-LIBFT_OBJ := $(LIBFT_DIR:.c=.o)
-GNL_OBJ := $(GNL_OBJ:.c=.o)
-FT_PRINTF_OBJ := $(FT_PRINTF_OBJ:.c=.o)
-
-$(NAME): $(OBJ) $(LIBFT_LIB) $(GNL_LIB) $(FT_PRINTF_LIB)
+# Build main executable
+$(NAME): $(OBJ) $(MLX_LIB) $(LIBFT_LIB) $(GNL_LIB) $(FT_PRINTF_LIB)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(MINILIBX_FLAGS) $(LIBFT_FLAGS) $(FTPRINTF_FLAGS) $(GNL_FLAGS)
+
 $(SRC_DIR)%.o: $(SRC_DIR)%.c
 	$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES)
 
-
+# Bonus
 bonus: $(BONUS_NAME)
 
-$(BONUS_NAME): $(BONUS_OBJ) $(LIBFT_LIB) $(GNL_LIB) $(FT_PRINTF_LIB)
+$(BONUS_NAME): $(BONUS_OBJ) $(MLX_LIB) $(LIBFT_LIB) $(GNL_LIB) $(FT_PRINTF_LIB)
 	$(CC) $(CFLAGS) $(BONUS_OBJ) -o $(BONUS_NAME) $(MINILIBX_FLAGS) $(LIBFT_FLAGS) $(FTPRINTF_FLAGS) $(GNL_FLAGS)
+
 $(BONUS_SRC_DIR)%.o: $(BONUS_SRC_DIR)%.c
 	$(CC) $(CFLAGS) -c $< -o $@ $(BONUS_INCLUDES)
 
+# Clean object files
 clean:
 	rm -f $(OBJ) $(BONUS_OBJ)
-	rm -f $(LIBFT_DIR)/*.o $(GNL_DIR)/*.o $(FTPRINTF_DIR)/*.o
-	rm -f $(LIBFT_LIB) $(GNL_LIB) $(FT_PRINTF_LIB)
+	make -C $(LIBFT_DIR) clean
+	make -C $(GNL_DIR) clean
+	make -C $(FTPRINTF_DIR) clean
+	make -C $(MLX_DIR) clean
 
+# Full clean
 fclean: clean
 	rm -f $(NAME) $(BONUS_NAME)
+	rm -f $(LIBFT_LIB) $(GNL_LIB) $(FT_PRINTF_LIB) $(MLX_LIB)
 
 re: fclean all
 
