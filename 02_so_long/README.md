@@ -131,4 +131,8 @@ To recompile everything from scratch, run:
 ```shell
 make re
 ```
+---
 
+### More on project writeup
+[Understanding so_long](https://chiseled-sink-f38.notion.site/Milestone-3-so_long-2559c91dc9e780c0bb6ffe4cbb7dc94d?source=copy_link) <br>
+[My reflections on the project](https://chiseled-sink-f38.notion.site/Building-My-First-2D-Game-A-Journey-with-So-Long-29c9c91dc9e780b6bb21fb1b99d9e759?source=copy_link)<br>
