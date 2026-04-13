@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_hex.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: pang < pang@student.42singapore.sg>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/27 19:30:20 by pang              #+#    #+#             */
-/*   Updated: 2025/05/30 15:12:56 by pang             ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 /* %x Prints a number in hexadecimal (base 16) lowercase format.
 %X Prints a number in hexadecimal (base 16) uppercase format. */
 

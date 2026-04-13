@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   push_bonus_instructions_1.c                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: pang <pang@student.42singapore.sg>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/07 12:53:26 by pang              #+#    #+#             */
-/*   Updated: 2025/09/10 14:48:14 by pang             ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap_bonus.h"
 
 // Shift up all emements of a stack by 1. first element becomes last

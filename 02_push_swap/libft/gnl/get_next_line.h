@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: pang < pang@student.42singapore.sg>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/30 16:18:45 by pang              #+#    #+#             */
-/*   Updated: 2025/06/03 20:08:06 by pang             ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
@@ -28,7 +16,5 @@ char	*ft_strdup_extract(const char *src);
 char	*ft_substr_remain(const char *s);
 char	*read_store(int fd, char *storage);
 char	*get_next_line(int fd);
-void	free_get_next_line(void);
-char	**get_storage_add(void);
 
 #endif

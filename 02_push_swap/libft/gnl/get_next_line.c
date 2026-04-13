@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: pang < pang@student.42singapore.sg>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/30 16:18:11 by pang              #+#    #+#             */
-/*   Updated: 2025/06/03 20:44:18 by pang             ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "get_next_line.h"
 
 char	*read_store(int fd, char *storage)
@@ -43,7 +31,7 @@ char	*read_store(int fd, char *storage)
 
 char	*get_next_line(int fd)
 {
-	static char	**storage;
+	static char	*storage;
 	char		*line;
 	char		*tmp;
 
@@ -51,42 +39,16 @@ char	*get_next_line(int fd)
 		return (NULL);
 	if (BUFFER_SIZE <= 0)
 		return (NULL);
-	storage = get_storage_add();
-	*storage = read_store(fd, *storage);
-	if (!*storage || !**storage)
+	storage = read_store(fd, storage);
+	if (!storage || !*storage)
 	{
-		free(*storage);
-		*storage = NULL;
+		free(storage);
+		storage = NULL;
 		return (NULL);
 	}
-	line = ft_strdup_extract(*storage);
-	tmp = *storage;
-	*storage = ft_substr_remain(tmp);
+	line = ft_strdup_extract(storage);
+	tmp = storage;
+	storage = ft_substr_remain(tmp);
 	free(tmp);
-	if (!*storage)
-		*storage = NULL;
 	return (line);
-}
-
-char	**get_storage_add(void)
-{
-	static char	*storage;
-	static char	**storage_ptr;
-
-	storage_ptr = NULL;
-	if (!storage_ptr)
-		storage_ptr = &storage;
-	return (storage_ptr);
-}
-
-void	free_get_next_line(void)
-{
-	char	**storage;
-
-	storage = get_storage_add();
-	if (storage && *storage)
-	{
-		free(*storage);
-		*storage = NULL;
-	}
 }
