@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: pang <pang@student.42singapore.sg>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/17 15:23:47 by pang              #+#    #+#             */
-/*   Updated: 2026/05/17 15:23:55 by pang             ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef WRONGANIMAL_HPP
 # define WRONGANIMAL_HPP
 
@@ -26,7 +14,7 @@ class	WrongAnimal
 		WrongAnimal& operator=(const WrongAnimal& original);
 		virtual ~WrongAnimal();
 
-		virtual void makeSound() const;
+		void makeSound() const;
 		std::string		getType() const;
 };
 
