@@ -5,6 +5,9 @@ A repo of all works and projects that are done in 42SG (currently pursuing)
 ### Cpp 00 - 04
 > These modules serve as an introduction to Object-Oriented Programming (OOP) in C++. You will move beyond procedural C to Classes, Inheritance and Polymorphism. The focus is on understanding memory management.
 
+### Cub3D
+> The goal of this project is to create a first-person, maze-like game using the raycasting technique. Utilizing the MiniLibX library, the game parses a 2D map layout and transforms it into a pseudo-3D environment featuring custom wall textures, a minimap and real-time player movement controls. It utilizes the Digital Differential Analysis (DDA) algorithm to rapidly step through the 2D grid and calculate precise ray intersections with walls without sacrificing performance.
+
 ### Net Practice 
 > This project is a practical introduction to TCP/IP networking, understanding a series of configuration exercises to understand IP addressing, subnetting and routing. It's designed to demystify how data moves across a network and how to manage small-scale network infrastructures.
 
