@@ -21,9 +21,13 @@ A repo of all works and projects that are done in 42SG (currently pursuing)
 ## Circle 2
 ### Push_swap
 > The goal of this project is to sort a stack of integers using a limited set of stack operations, in as few moves as possible. This project helps to develop efficient algorithms and improve your understanding of data structures, sorting logic, and algorithmic optimization in C.
+> - Algo used: <br> LIS + Greedy
 
 ### Pipex
 > This project is designed to recreate the behavior of the shell pipe (|) by executing multiple commands and connecting their inputs and outputs through file descriptors. It helps you understand how processes communicate, and how to use system calls like pipe(), fork(), and execve() to manage process creation and data flow in C.
+
+### Minitalk
+> The goal of this project is to create a small data transmission program using UNIX signals. You will implement a client-server architecture where the client transmits text strings to the server bit-by-bit using only SIGUSR1 and SIGUSR2. This project provides a practical introduction to inter-process communication (IPC), bitwise manipulation, and signal handling in C.
 
 ### So_Long
 > This project is designed to introduce you to basic 2D game development using the MiniLibX library. The goal is to create a small game where the player collects items and reaches an exit while navigating through a map. Through this project, you’ll learn about graphics rendering, event handling, and implementing a simple game loop in C.

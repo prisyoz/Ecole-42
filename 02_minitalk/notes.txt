@@ -1,0 +1,50 @@
+Breaking printf in the context of a project like minitalk usually means one of two things: either it's undefined behavior/crashing your server, or it's causing a timing and synchronization bug where signals get lost.
+
+Because minitalk is heavily reliant on fast UNIX signals (SIGUSR1 / SIGUSR2), putting printf inside your signal handler is actually a ticking time bomb.
+
+Here are the two primary ways printf will break your code.
+
+1. Breaking via Signal Interference (Non-Reentrant Functions)
+The absolute golden rule of UNIX signal handlers is: You must only call async-signal-safe functions. printf is not safe to call inside a signal handler.
+
+Why it breaks:
+printf uses a global internal buffer and locks under the hood to manage data. Imagine this nightmare scenario:
+
+Your server is in the middle of executing a normal printf in your main loop to display a status message.
+
+Halfway through that printf execution, a SIGUSR1 signal arrives from the client.
+
+The CPU immediately pauses main and jumps straight into your sig_handler.
+
+Inside sig_handler, your code tries to call printf again.
+
+Because the first printf was interrupted mid-calculation, the internal buffer is locked or corrupted. The second printf will try to access it, resulting in a deadlock (your server freezes completely) or a Segmentation Fault (an instant crash).
+
+The Fix: Replace any printf inside your signal handler with write(1, &i, 1);. The write system call is completely safe and won't lock up or corrupt your memory when interrupted.
+
+2. Breaking via Buffering (Missing Data)
+Even if you aren't crashing, printf might make it look like your code is broken because nothing is printing to the screen.
+
+printf uses buffered output. It doesn't actually send characters to your terminal the exact millisecond you call it. Instead, it hoards the characters in a temporary memory bin and waits until:
+
+It sees a newline character (\n).
+
+The buffer gets completely full.
+
+You explicitly tell it to empty itself.
+
+If you are using printf("%c", i); inside your handler every time a character finishes, your terminal will look like it's completely frozen. It won't display anything until the client sends a massive amount of text or closes.
+
+The Fix: If you must use printf for debugging outside the handler, you have to manually force the buffer to empty itself right after the call:
+
+C
+printf("%c", i);
+fflush(stdout); // 💡 Forces the buffer to empty onto the screen immediately!
+Summary Checklist for Minitalk Debugging
+If you are currently debugging your code and it's acting weird:
+
+Remove all printf calls from inside your sig_handler.
+
+Use write(STDOUT_FILENO, ...) for server outputs inside handlers.
+
+If using printf in main, always append \n or use fflush(stdout).
