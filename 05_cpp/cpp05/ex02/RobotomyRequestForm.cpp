@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: pang <pang@student.42singapore.sg>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/01 16:18:03 by pang              #+#    #+#             */
-/*   Updated: 2026/07/01 16:18:03 by pang             ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45), _target("Unknown") {}

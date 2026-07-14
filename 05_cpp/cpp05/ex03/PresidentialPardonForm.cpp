@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: pang <pang@student.42singapore.sg>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/01 16:18:46 by pang              #+#    #+#             */
-/*   Updated: 2026/07/01 16:19:01 by pang             ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "PresidentialPardonForm.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm", 25, 5), _target("Unknown") {}

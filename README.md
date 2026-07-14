@@ -1,6 +1,18 @@
 # Ecole-42
 A repo of all works and projects that are done in 42SG (currently pursuing)
 
+## Next (new common core)
+### Python (Next)
+> These modules introduces the fundamentals of Python and Object-Oriented Programming(OOP). You will master modern software design, classes, inheritance, and design patterns to write clean, maintainable code.
+
+---
+
+## Circle 5
+### Cpp 05 - 09
+> These modules focus on advanced C++ concepts, moving through Exception Handling, Type Casting and Templates, before diving into STL containers and algorithms to write robust, efficient and generic code.
+
+---
+
 ## Circle 4
 ### Cpp 00 - 04
 > These modules serve as an introduction to Object-Oriented Programming (OOP) in C++. You will move beyond procedural C to Classes, Inheritance and Polymorphism. The focus is on understanding memory management.
@@ -11,12 +23,16 @@ A repo of all works and projects that are done in 42SG (currently pursuing)
 ### Net Practice 
 > This project is a practical introduction to TCP/IP networking, understanding a series of configuration exercises to understand IP addressing, subnetting and routing. It's designed to demystify how data moves across a network and how to manage small-scale network infrastructures.
 
+---
+
 ## Circle 3
 ### Philosophers
 > The goal of this project is to solve the classic "Dining Philosophers" problem, introducing the fundasmentals of multithreading and concurrency. You will learn to manage shared resources using mutexes and/or semaphores to prevent data races and implement synchronization logic to avoid deadlocks and starvation.
 
 ### Minishell
 > The goal of this project is to create your own simple shell, mimicking the behavior of bash. You will delve into the inner workings of a command-line interpreter, including parsing complexstrings, managing environment variables and implementing pipes and redirections. This project is a major milestone in understanding process lifecycles and the relationship between a user interface and the kernel.
+
+---
 
 ## Circle 2
 ### Push_swap
